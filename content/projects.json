@@ -3,9 +3,16 @@
     {
       "slug": "venus-em-escorpiao",
       "title": "Vênus em Escorpião",
-      "format": "Cinema",
+      "format": "Filme | Cinema",
       "cover": "/assets/uploads/4cdc159b-2009-4700-8fff-bd5b8369ace4.jpg",
       "description": "Filme de Curta metragem dirigdo or fulanoe e sicarnos."
+    },
+    {
+      "slug": "desempregadas",
+      "title": "Desempregadas",
+      "format": "Filme | Cinema",
+      "cover": "/assets/uploads/20250829_194453635_ios.png",
+      "description": "Lunard em Desempregadas\nLançamento: 2025\nDireção: Aleksander Aragão"
     }
   ]
 }
