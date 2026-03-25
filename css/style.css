@@ -54,3 +54,47 @@ body{font-family:Arial,Helvetica,sans-serif;color:#111}
 .card-text{
   position:absolute;bottom:16px;left:16px;color:#fff
 }
+
+/* === CARD: texto só no hover === */
+.card-text {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+/* overlay também pode ficar mais suave e intensificar no hover */
+.card-overlay{
+  opacity: .25;
+  transition: opacity .18s ease;
+}
+
+.card:hover .card-text{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover .card-overlay{
+  opacity: .55;
+}
+
+/* Acessibilidade: se navegar por teclado (Tab), também mostra */
+.card:focus-within .card-text{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:focus-within .card-overlay{
+  opacity: .55;
+}
+
+/* Mobile: não tem hover consistente.
+   Então mostramos o texto sempre em telas pequenas */
+@media (max-width: 900px){
+  .card-text{
+    opacity: 1;
+    transform: none;
+  }
+  .card-overlay{
+    opacity: .45;
+  }
+}
