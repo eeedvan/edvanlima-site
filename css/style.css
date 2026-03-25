@@ -1,150 +1,258 @@
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;color:#111}
-
-.site-header{
-  position:fixed;top:0;left:0;right:0;
-  padding:20px;background:transparent;z-index:10
-}
-.header-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between}
-.nav a{margin-left:16px;text-decoration:none}
-
-.hero{
-  height:100vh;
-  position:relative;
-  overflow:hidden
-}
-.hero-media{
-  position:absolute;inset:0;
-  background-image: url("../assets/_MG_6583.jpg") center/cover no-repeat;
-  transform:scale(1.05)
-}
-.hero-overlay{
-  position:absolute;inset:0;
-  background:rgba(0,0,0,.2)
-}
-.hero-content{
-  position:relative;z-index:2;
-  height:100%;
-  display:flex;flex-direction:column;
-  justify-content:flex-end;
-  padding:80px;color:#fff
+/* =========================================================
+   RESET BÁSICO E CONFIGURAÇÕES GERAIS
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container{max-width:1200px;margin:0 auto;padding:80px 20px}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(12, 1fr);
-  gap:16px;
-}
-.card{
-  grid-column: span 4;
-  min-height: 260px;
-  border-radius:16px;
-  overflow:hidden;
-  position:relative; }
-
-/* variações modulares */
-.card.is-wide{ grid-column: span 6; min-height: 340px; }
-.card.is-tall{ grid-column: span 3; min-height: 420px; }
-
-@media (max-width: 900px){
-  .grid{ grid-template-columns:repeat(6,1fr); }
-  .card, .card.is-wide, .card.is-tall{ grid-column: span 6; min-height: 320px; }
-}
-.card-media{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center
-}
-.card-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.6),transparent)
-}
-.card-text{
-  position:absolute;bottom:16px;left:16px;color:#fff
+body {
+  font-family: var(--font-body);
+  color: #111;
 }
 
-/* === CARD: texto só no hover === */
-.card-text {
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity .18s ease, transform .18s ease;
-}
 
-/* overlay também pode ficar mais suave e intensificar no hover */
-.card-overlay{
-  opacity: .25;
-  transition: opacity .18s ease;
-}
-
-.card:hover .card-text{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card:hover .card-overlay{
-  opacity: .55;
-}
-
-/* Acessibilidade: se navegar por teclado (Tab), também mostra */
-.card:focus-within .card-text{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card:focus-within .card-overlay{
-  opacity: .55;
-}
-
-/* Mobile: não tem hover consistente.
-   Então mostramos o texto sempre em telas pequenas */
-@media (max-width: 900px){
-  .card-text{
-    opacity: 1;
-    transform: none;
-  }
-  .card-overlay{
-    opacity: .45;
-  }
-}
-.card-text{
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(0,0,0,.20);
-  backdrop-filter: blur(10px);
-}
-/* texto some por padrão */
-.card-text{
-  opacity:0;
-  transform: translateY(8px);
-  transition: opacity .18s ease, transform .18s ease;
-}
-
-/* overlay fica mais forte no hover */
-.card-overlay{
-  opacity:.20;
-  transition: opacity .18s ease;
-}
-
-.card:hover .card-text{
-  opacity:1;
-  transform: translateY(0);
-}
-.card:hover .card-overlay{
-  opacity:.55;
-}
-
-/* Mobile: sem hover confiável, texto sempre visível */
-@media (max-width: 900px){
-  .card-text{ opacity:1; transform:none; }
-  .card-overlay{ opacity:.45; }
-}
-
-:root{
+/* =========================================================
+   VARIÁVEIS GLOBAIS (TIPOGRAFIA)
+   ========================================================= */
+:root {
   --font-display: "Saira Condensed", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 
-body{ font-family: var(--font-body); }
-.hero-title, .card-title, h1, h2{ font-family: var(--font-display); letter-spacing:.01em; }
-``
+
+/* =========================================================
+   HEADER FIXO DO SITE
+   ========================================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 20px;
+  background: transparent;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav a {
+  margin-left: 16px;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   HERO – SEÇÃO PRINCIPAL DA HOME
+   (imagem grande + overlay + texto)
+   ========================================================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Imagem de fundo do hero */
+.hero-media {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("../assets/_MG_6583.jpg");
+  background-size: cover;
+  background-position: center;
+
+  transform: scale(1.05);
+}
+
+/* Overlay escuro sobre a imagem */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Conteúdo textual do hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  height: 100%;
+  padding: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   CONTAINER PADRÃO DE CONTEÚDO
+   ========================================================= */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+
+/* =========================================================
+   MOSAICO DE PROJETOS (GRID DA HOME)
+   ========================================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+
+/* =========================================================
+   CARD – BLOCO DE CADA PROJETO
+   ========================================================= */
+.card {
+  position: relative;
+
+  grid-column: span 4;
+  min-height: 260px;
+
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Card mais largo */
+.card.is-wide {
+  grid-column: span 6;
+  min-height: 340px;
+}
+
+/* Card mais alto */
+.card.is-tall {
+  grid-column: span 3;
+  min-height: 420px;
+}
+
+
+/* =========================================================
+   ESTRUTURA INTERNA DO CARD
+   ========================================================= */
+
+/* Imagem do projeto */
+.card-media {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay gradiente sobre a imagem */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6),
+    transparent
+  );
+
+  opacity: 0.25;
+  transition: opacity 0.18s ease;
+}
+
+/* Texto do projeto (título, formato, etc.) */
+.card-text {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+
+  padding: 10px 12px;
+  border-radius: 12px;
+
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+
+  color: #ffffff;
+
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+
+/* =========================================================
+   INTERAÇÃO – HOVER / FOCO
+   ========================================================= */
+
+/* Hover com mouse */
+.card:hover .card-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover .card-overlay {
+  opacity: 0.55;
+}
+
+/* Acessibilidade – foco por teclado */
+.card:focus-within .card-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:focus-within .card-overlay {
+  opacity: 0.55;
+}
+
+
+/* =========================================================
+   RESPONSIVO – MOBILE / TABLET
+   ========================================================= */
+@media (max-width: 900px) {
+
+  /* Grid reduzido */
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  /* Cards ocupam largura total */
+  .card,
+  .card.is-wide,
+  .card.is-tall {
+    grid-column: span 6;
+    min-height: 320px;
+  }
+
+  /* Texto sempre visível (sem hover no mobile) */
+  .card-text {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-overlay {
+    opacity: 0.45;
+  }
+}
+
+
+/* =========================================================
+   TIPOGRAFIA – TÍTULOS E TEXTOS DE DESTAQUE
+   ========================================================= */
+.hero-title,
+.card-title,
+h1,
+h2 {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
