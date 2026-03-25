@@ -1,0 +1,11 @@
+{
+  "projects": [
+    {
+      "slug": "venus-em-escorpiao",
+      "title": "Vênus em Escorpião",
+      "format": "Cinema",
+      "cover": "assets/uploads/venus/cover.jpg",
+      "description": "Descrição do projeto."
+    }
+  ]
+}

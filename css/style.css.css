@@ -1,0 +1,56 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;color:#111}
+
+.site-header{
+  position:fixed;top:0;left:0;right:0;
+  padding:20px;background:transparent;z-index:10
+}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between}
+.nav a{margin-left:16px;text-decoration:none}
+
+.hero{
+  height:100vh;position:relative;overflow:hidden
+}
+.hero-media{
+  position:absolute;inset:0;
+  background:url("../assets/hero.jpg") center/cover no-repeat;
+  transform:scale(1.05)
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.2)
+}
+.hero-content{
+  position:relative;z-index:2;
+  height:100%;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:80px;color:#fff
+}
+
+.container{max-width:1200px;margin:0 auto;padding:80px 20px}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px
+}
+
+.card{
+  position:relative;
+  height:280px;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer
+}
+.card-media{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center
+}
+.card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.6),transparent)
+}
+.card-text{
+  position:absolute;bottom:16px;left:16px;color:#fff
+}
