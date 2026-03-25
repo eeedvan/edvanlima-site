@@ -15,7 +15,7 @@ body{font-family:Arial,Helvetica,sans-serif;color:#111}
 }
 .hero-media{
   position:absolute;inset:0;
-  background:url("../assets/_MG_6583.jpg") center/cover no-repeat;
+  background-image: url("../assets/_MG_6583.jpg") center/cover no-repeat;
   transform:scale(1.05)
 }
 .hero-overlay{
