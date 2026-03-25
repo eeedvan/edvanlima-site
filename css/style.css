@@ -32,16 +32,23 @@ body{font-family:Arial,Helvetica,sans-serif;color:#111}
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px
+  grid-template-columns:repeat(12, 1fr);
+  gap:16px;
 }
-
 .card{
-  position:relative;
-  height:280px;
+  grid-column: span 4;
+  min-height: 260px;
   border-radius:16px;
   overflow:hidden;
-  cursor:pointer
+  position:relative; }
+
+/* variações modulares */
+.card.is-wide{ grid-column: span 6; min-height: 340px; }
+.card.is-tall{ grid-column: span 3; min-height: 420px; }
+
+@media (max-width: 900px){
+  .grid{ grid-template-columns:repeat(6,1fr); }
+  .card, .card.is-wide, .card.is-tall{ grid-column: span 6; min-height: 320px; }
 }
 .card-media{
   position:absolute;inset:0;
@@ -103,4 +110,30 @@ body{font-family:Arial,Helvetica,sans-serif;color:#111}
   border-radius: 12px;
   background: rgba(0,0,0,.20);
   backdrop-filter: blur(10px);
+}
+/* texto some por padrão */
+.card-text{
+  opacity:0;
+  transform: translateY(8px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+/* overlay fica mais forte no hover */
+.card-overlay{
+  opacity:.20;
+  transition: opacity .18s ease;
+}
+
+.card:hover .card-text{
+  opacity:1;
+  transform: translateY(0);
+}
+.card:hover .card-overlay{
+  opacity:.55;
+}
+
+/* Mobile: sem hover confiável, texto sempre visível */
+@media (max-width: 900px){
+  .card-text{ opacity:1; transform:none; }
+  .card-overlay{ opacity:.45; }
 }
