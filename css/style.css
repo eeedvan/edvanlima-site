@@ -137,3 +137,12 @@ body{font-family:Arial,Helvetica,sans-serif;color:#111}
   .card-text{ opacity:1; transform:none; }
   .card-overlay{ opacity:.45; }
 }
+
+:root{
+  --font-display: "Saira Condensed", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+body{ font-family: var(--font-body); }
+.hero-title, .card-title, h1, h2{ font-family: var(--font-display); letter-spacing:.01em; }
+``
